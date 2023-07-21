@@ -3,11 +3,12 @@ import { CinduxaTablet } from "components/CinduxaTablet";
 import { Typewriter } from "components/Typewriter";
 import { useCallback, useState } from "react";
 import { Link } from "react-router-dom";
+import cx from "classnames";
 
 export function Home() {
-  const [isButtonHidden, setIsButtonHidden] = useState(true);
+  const [isButtonShowing, setIsButtonShowing] = useState(false);
 
-  const onWriteFinish = useCallback(() => setIsButtonHidden(false), []);
+  const onWriteFinish = useCallback(() => setIsButtonShowing(true), []);
 
   return (
     <>
@@ -25,10 +26,7 @@ export function Home() {
 
         <Link
           to="/menu"
-          className={[
-            styles.menuLink,
-            isButtonHidden ? styles.hidden : "",
-          ].join(" ")}
+          className={cx(["hiddenTransition", isButtonShowing || "hidden"])}
         >
           <button className={styles.startButton}>Começar tour</button>
         </Link>
