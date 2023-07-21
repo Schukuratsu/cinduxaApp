@@ -1,0 +1,19 @@
+.container {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 2rem;
+    text-align: center;
+}
+
+.shadow {
+    text-shadow: 2px 2px rgba(0, 0, 0, 0.2);
+}
+
+.startButton {
+    border: none;
+    transition: all 0.3s;
+}
+.startButton:hover {
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    filter: brightness(0.9)
+}
