@@ -5,9 +5,9 @@ import { useCallback, useState } from "react";
 import { Link } from "react-router-dom";
 
 export function Home() {
-  const [isButtonShowing, setIsButtonShowing] = useState(false);
+  const [isButtonHidden, setIsButtonHidden] = useState(true);
 
-  const onWriteFinish = useCallback(() => setIsButtonShowing(true), []);
+  const onWriteFinish = useCallback(() => setIsButtonHidden(false), []);
 
   return (
     <>
@@ -22,11 +22,16 @@ export function Home() {
             />
           </h2>
         </div>
-        {isButtonShowing && (
-          <Link to="/menu">
-            <button className={styles.startButton}>Começar tour</button>
-          </Link>
-        )}
+
+        <Link
+          to="/menu"
+          className={[
+            styles.menuLink,
+            isButtonHidden ? styles.hidden : "",
+          ].join(" ")}
+        >
+          <button className={styles.startButton}>Começar tour</button>
+        </Link>
       </main>
     </>
   );
